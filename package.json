@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.0",
     "autoprefixer": "10.4.14",
+    "country-flag-emoji-json": "^2.0.0",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
+    "framer-motion": "^10.12.10",
+    "mini-css-extract-plugin": "^2.7.5",
     "mongodb": "^5.5.0",
     "next": "13.4.2",
     "postcss": "8.4.23",
