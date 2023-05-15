@@ -4,7 +4,8 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, Text, Flex } from '@chakra-ui/react'
 import Image from "next/image"
 import Link from 'next/link'
-
+import { FaFlag, FaTrophy } from 'react-icons/fa';
+import {FcManager}from 'react-icons/fc'
 export default function MainPage() {
 	const [records, setRecords] = useState([]);
 	
@@ -44,47 +45,48 @@ export default function MainPage() {
 	return (
         <div>
 
-            <Text className="w-[500px] mx-auto text-center text-6xl">Details about football teams app</Text>
+            <Text className="w-[500px] mx-auto text-center text-5xl" color='#A0AEC0' mt={10} mb={5}>Details about football teams app</Text>
             <Flex  justifyContent='center' alignItems='center'>
                 <Link href="/insert">
-                    <Button colorScheme='blue' mt={5}>
+                    <Button colorScheme="orange" mt={5} mb={5} variant='outline'>
                     Adaugă un nou record
                     </Button>
                 </Link>
             </Flex>
         <section style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>  
         {records.map(record => (
-          <Card maxW='sm' key={record.id} style={{ margin: '10px', padding: '10px', width: '100%', maxWidth: '300px', backgroundColor:"#a3a30a" }}>
+          <Card maxW='sm' key={record.id} style={{ margin: '10px', padding: '10px', width: '100%', maxWidth: '300px', backgroundColor:"#FBD38D" }}>
             <CardBody>
-              <Stack>
-                <Heading size='md' textAlign="center">{record.numeEchipa}</Heading>
-                <Flex direction="row" justifyContent="space-between" alignItems="center">
-                  <Text>Antrenor: </Text>
-                  <Text>
-                    {record.antrenorActual}
-                  </Text>
-                </Flex>
-                <Flex direction="row" justifyContent="space-between" alignItems="center">
-                  <Text>Tara: </Text>
-                  <Text>
-                    {record.tara}
-                  </Text>
-                </Flex>
-                <Flex direction="row" justifyContent="space-between" alignItems="center">
-                  <Text>Nr Campionate Castigate: </Text>
-                  <Text>
-                    {record.nrCampionate}
-                  </Text>
-                </Flex>
-                
+                <Heading size='md' textAlign="center" marginBottom={2}>{record.numeEchipa}</Heading>
+                <Flex justifyContent='center'>
+                <Stack>  
+                    <Flex direction="row" >
+                        <Text ><FcManager /> </Text>
+                        <Text >
+                        {record.antrenorActual}
+                        </Text>
+                    </Flex>
+                    <Flex direction="row"  alignItems="center">
+                    <Text><FaFlag /> </Text>
+                    <Text>
+                        {record.tara}
+                    </Text>
+                    </Flex>
+                    <Flex direction="row" alignItems="center">
+                    <Text><FaTrophy style={{ display: 'inline-block', marginRight: '5px' }} /></Text>
+                    <Text style={{ display: 'inline-block' }}>
+                        {record.nrCampionate}
+                    </Text>
+                    </Flex>                
               </Stack>
+              </Flex>
             </CardBody>
             <Divider />
             <CardFooter justifyContent='center'>
               <ButtonGroup spacing='2'>
                 <Button
                   variant='solid'
-                  colorScheme='blackAlpha'
+                  bg='orange'
                   id={record._id}
                   onClick={deleteRecord}>
                   Stergere

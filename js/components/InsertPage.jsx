@@ -36,11 +36,11 @@ export default function InsertPage() {
 
 	return (
 		<section>
-            <Text className="w-[500px] mx-auto text-center text-6xl">Adaugare card nou</Text>
+            <Text className="w-[500px] mx-auto text-center text-6xl" color='#F56565' mt='10'>Adaugare card nou</Text>
             
             <div className="container px-6 py-10 mx-auto">  
             <div> 
-			<FormControl isRequired >
+			<FormControl  >
                 <FormLabel >Nume Echipa</FormLabel>
                 <Input  id="numeEchipa" type='tel' placeholder='Aici trebuie introdus numele echipei' />
                 <FormLabel>Antrenor</FormLabel>
@@ -56,15 +56,16 @@ export default function InsertPage() {
 
             <Button
             mt={4}
-            colorScheme='teal'
+            bg='#F56565'
             onClick={ insertRecord }
             type='submit'
+            textColor='white'
           >
             Submit
           </Button>
 
           <Link href="/">
-                <Button colorScheme='red' mt={4}>
+                <Button bg='#F56565' mt={4}  textColor='white'>
                     Inapoi la pagina principala
                 </Button>
             </Link>
