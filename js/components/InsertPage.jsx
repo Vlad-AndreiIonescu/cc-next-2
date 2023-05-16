@@ -3,8 +3,9 @@ import {
     FormLabel,
     FormErrorMessage,
     FormHelperText,
-    Input, Button, Flex, Text, Divider
+    Input, Button, Flex, Text, Divider, useToast, color
   } from '@chakra-ui/react'
+  import React from 'react'
 import Link from 'next/link'
 
 
@@ -32,23 +33,47 @@ export default function InsertPage() {
             document.getElementById("tara").value = "";
             document.getElementById("nrCampionate").value = "";
 		});
+
+    addToast();
     }
+
+   
+      const toast = useToast()
+      const toastIdRef = React.useRef()
+    
+      function close() {
+        if (toastIdRef.current) {
+          toast.close(toastIdRef.current)
+        }
+      }
+    
+      function closeAll() {
+        // you may optionally pass an object of positions to exclusively close
+        // keeping other positions opened
+        // e.g. `{ positions: ['bottom'] }`
+        toast.closeAll()
+      }
+    
+      function addToast() {
+        toastIdRef.current = toast({ description: 'Record added', colorScheme:'green', duration: 3000, status: 'success' })
+      }
+      
 
 	return (
 		<section>
-            <Text className="w-[500px] mx-auto text-center text-6xl" color='#F56565' mt='10'>Adaugare card nou</Text>
+            <Text className="w-[500px] mx-auto text-center text-6xl" color='#F56565' mt='10'>Add new card</Text>
             
             <div className="container px-6 py-10 mx-auto">  
             <div> 
 			<FormControl  >
-                <FormLabel >Nume Echipa</FormLabel>
-                <Input  id="numeEchipa" type='tel' placeholder='Aici trebuie introdus numele echipei' />
-                <FormLabel>Antrenor</FormLabel>
-                <Input id="antrenor" type='text' placeholder='Aici trebuie introdus numele antrenorului' />
-                <FormLabel>Tara de provenienta</FormLabel>
-                <Input  id="tara"type='text' placeholder='Aici trebuie introdusa tara de provenienta a echipei' />
-                <FormLabel>Numar campionate nationale castigate</FormLabel>
-                <Input id="nrCampionate" type='text' placeholder='Aici trebuie introdus numarul de campionate nationale castigate' />
+                <FormLabel>Team Name</FormLabel>
+                <Input  id="numeEchipa" type='tel' placeholder='Team Name is ...' />
+                <FormLabel>Manager</FormLabel>
+                <Input id="antrenor" type='text' placeholder='Manager is ...' />
+                <FormLabel>Country</FormLabel>
+                <Input  id="tara"type='text' placeholder='Country is ...' />
+                <FormLabel>Number of championships</FormLabel>
+                <Input id="nrCampionate" type='text' placeholder='The number of championships is ...' />
                 
             </FormControl>
             </div> 
@@ -66,7 +91,7 @@ export default function InsertPage() {
 
           <Link href="/">
                 <Button bg='#F56565' mt={4}  textColor='white'>
-                    Inapoi la pagina principala
+                    Back to Main Page
                 </Button>
             </Link>
             </Flex>

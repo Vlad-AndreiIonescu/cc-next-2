@@ -1,11 +1,13 @@
 // js/components/MainPage.jsx
 import {useEffect, useState} from "react";
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, Text, Flex } from '@chakra-ui/react'
+import { Button, ButtonGroup, Spacer } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, Text, Flex, Box } from '@chakra-ui/react'
 import Image from "next/image"
 import Link from 'next/link'
 import { FaFlag, FaTrophy } from 'react-icons/fa';
 import {FcManager}from 'react-icons/fc'
+
+
 export default function MainPage() {
 	const [records, setRecords] = useState([]);
 	
@@ -45,14 +47,24 @@ export default function MainPage() {
 	return (
         <div>
 
-            <Text className="w-[500px] mx-auto text-center text-5xl" color='#A0AEC0' mt={10} mb={5}>Details about football teams app</Text>
-            <Flex  justifyContent='center' alignItems='center'>
+            <Text className="w-[500px] mx-auto text-center text-5xl" color='#FBD38D' mt={10} mb={5}>Details about football teams app</Text>
+            <Flex justifyContent='center' alignItems='center'>
+              <Box mr={4}>
                 <Link href="/insert">
-                    <Button colorScheme="orange" mt={5} mb={5} variant='outline'>
-                    Adaugă un nou record
-                    </Button>
+                  <Button colorScheme="orange" mt={5} mb={5} variant='outline'>
+                    Add a new record
+                  </Button>
                 </Link>
+              </Box>
+              <Box>
+                <Link href="/footballApi">
+                  <Button colorScheme="orange" mt={5} mb={5} variant='outline'>
+                    View teams from Premier League
+                  </Button>
+                </Link>
+              </Box>
             </Flex>
+
         <section style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>  
         {records.map(record => (
           <Card maxW='sm' key={record.id} style={{ margin: '10px', padding: '10px', width: '100%', maxWidth: '300px', backgroundColor:"#FBD38D" }}>
@@ -89,7 +101,7 @@ export default function MainPage() {
                   bg='orange'
                   id={record._id}
                   onClick={deleteRecord}>
-                  Stergere
+                  Delete
                 </Button>
               </ButtonGroup>
             </CardFooter>
